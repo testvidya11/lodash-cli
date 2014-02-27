@@ -7,40 +7,6 @@ node_js:
   
   
   
-env:
-  global:
-    - BIN="node" BUILD="compat" EXPORTS="commonjs" OPTION="" OUTPUT_PATH=false TARGET_PATH=false TEST_BUILDS=false 
-  matrix:
-    - BUILD="compat"
-    - BUILD="legacy"
-    - BUILD="mobile"
-    - BUILD="modern"
-    - BUILD="modern" EXPORTS="npm" OUTPUT_PATH="./npm/node_modules" TARGET_PATH="../../../npm/index.js"
-matrix:
-  include:
-    - node_js: "0.10"
-      env: BIN="narwhal" BUILD="compat"
-    - node_js: "0.10"
-      env: BIN="narwhal" BUILD="legacy"
-    - node_js: "0.10"
-      env: BIN="rhino"   BUILD="compat" OPTION="-require"
-    - node_js: "0.10"
-      env: BIN="rhino"   BUILD="legacy" OPTION="-require"
-    - node_js: "0.10"
-      env: BIN="ringo"   BUILD="compat"
-    - node_js: "0.10"
-      env: BIN="ringo"   BUILD="legacy"
-    - node_js: "0.6"
-      env: TEST_BUILDS=true
-    - node_js: "0.10"
-      env: TEST_BUILDS=true
-git:
-  depth: 10
-branches:
-  only:
-    - master
-    
-    
 before_install:
   - "git clone --depth=10 --branch=master git://github.com/lodash/lodash.git ./node_modules/lodash"
   - "[ $OUTPUT_PATH != false ] || OUTPUT_PATH=\"./$EXPORTS/$BUILD\""
