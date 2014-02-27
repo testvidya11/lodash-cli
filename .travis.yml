@@ -5,6 +5,7 @@ node_js:
   - "0.10"
   
   
+  
 env:
   global:
     - BIN="node" BUILD="compat" EXPORTS="commonjs" OPTION="" OUTPUT_PATH=false TARGET_PATH=false TEST_BUILDS=false 
